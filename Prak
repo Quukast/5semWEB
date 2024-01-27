@@ -1,0 +1,69 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кнопка и строка</title>
+  <style>
+    .container {
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <input type="text" id="inputField">
+  <button id="add-button">Добавить новую строку</button>
+</div>
+<div id="output"></div>
+<script src = "index.js"></script>
+</body>
+
+
+JavaScript
+
+
+let todos = JSON.parse(localStorage.getItem("todos")) ?? [];
+let addButton =document.getElementById('add-button');
+const output = document.getElementById('output');
+
+render();
+addButton.addEventListener("click", () => {
+    let inputText = document.getElementById('inputField').value;
+  console.log(inputText)
+
+    if (inputText === "") {
+      alert("Введите число");
+      return;
+    }
+    todos.push(inputText);
+    render();
+    saveToLocalStorage();
+})
+function render() {
+  const newHtml = todos.reduce((prev, curr, index) => {
+    return prev + `
+      <div>
+        <span>${curr}</span>
+        <button data-id="${index}">Удалить</button>
+      </div>
+    `;
+  } , "");
+
+  output.innerHTML = newHtml;
+}
+
+output.addEventListener("click", (event) => {
+  if (event.target.nodeName === "BUTTON") {
+    let todoId = event.target.getAttribute("data-id");
+    todos.splice(todoId, 1);
+    render();
+    saveToLocalStorage();
+  }
+})
+
+function saveToLocalStorage() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
