@@ -1,0 +1,100 @@
+1) создать массив 3 разными способами
+
+Код:
+Использование квадратных скобок и перечесления элементов:
+let array1 = [1, 2, 3, 4, 5];
+
+Использование конструктора Array:
+let array2 = new Array(1, 2, 3, 4, 5);
+
+Использование пустого массива, который затем заполняется с помощью метода push:
+let array3 = [];
+array3.push(1);
+array3.push(2);
+array3.push(3);
+array3.push(4);
+array3.push(5);
+
+
+2) выведите на экран 5 член вашего массива затем измените его значение 
+
+Код:
+let array1 = [1, 2, 3, 4, 5];
+console.log(array1[4]); 
+array1[4] = 10; 
+console.log(array1); 
+
+3) узнайте длину вашего массива и выведите ее значение при наведении на любой элемент
+
+Код:
+let array1 = [1, 2, 3, 4, 5];
+console.log(array1.length); 
+document.addEventListener('mouseover', function(event) {
+  console.log(array1.length);
+});
+
+
+4) выведите все элементы массива, используя цикл for
+
+Код:
+let array1 = [1, 2, 3, 4, 5];
+for (let i = 0; i < array1.length; i++) {
+  console.log(array1[i]);
+}
+
+5) создайте 2 массива. Объедините их в один и выведите на экран полученный массив
+
+Код:
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+let combinedArray = array1.concat(array2);
+console.log(combinedArray);
+
+
+6) Удалите последний член получившегося массива и выведите это значение на экран
+
+Код:
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+let combinedArray = array1.concat(array2);
+let lastNumber = combinedArray.pop();
+console.log(lastNumber);
+
+7) Добавьте новый элемент в начало вашего объединенного массива
+
+Код:
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+let combinedArray = array1.concat(array2);
+combinedArray.unshift(0);
+console.log(combinedArray);	
+
+
+8) Получите сегодняшнюю дату и выведите ее на экран
+
+Код:
+let today = new Date();
+console.log(today);
+
+
+9) Выведите сегодняшнюю дату в формате 11 ноября 2020 года
+
+Код:
+let today = new Date();
+let day = today.getDate();
+let month = today.toLocaleString('ru-RU', { month: 'long' });
+let year = today.getFullYear();
+console.log(${day} ${month} ${year} года);
+
+10) напишите функцию, подсчитывающую произведение двух случайных чисел в промежутке от нуля до 50
+
+Код:
+function calculate() {
+  let num1 = Math.floor(Math.random() * 51);
+  let num2 = Math.floor(Math.random() * 51);
+  let product = num1 * num2; 
+  return product; 
+}
+let result = calculate ();
+console.log(result); 
+
